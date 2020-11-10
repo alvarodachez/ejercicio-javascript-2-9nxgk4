@@ -44,6 +44,9 @@ const changeSecondList = () => {
     elementoLi.appendChild(elementoButton);
     secondList.appendChild(elementoLi);
   }
+  let buttons = document.getElementsByTagName("button");
+
+  buttons[2].setAttribute("disabled", "");
 };
 
 c;
