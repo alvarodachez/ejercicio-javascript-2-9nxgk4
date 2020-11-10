@@ -9,11 +9,47 @@
 // Suerte!
 
 window.addEventListener("load", onLoad);
-const changeClassFirstList = () => {
-  let firstList = document.getElementById("list1");
-  let firstSpanListfirstList.getElementsByTagName("span");
-
+/**
+ * Funcion para actuar sobre la primera lista
+ */
+const changeFirstList = () => {
+  let spanSelected = document.getElementsByClassName("selected");
+  let spanSelectedFather = spanSelected[0].parentNode;
+  let list = spanSelectedFather.parentNode;
+  let spanList = list.getElementsByTagName("span");
+  let cont = 1;
+  for (s of spanList) {
+    s.setAttribute("class", "element-" + cont);
+    cont++;
+  }
+  let spanToDelete = document.querySelectorAll(".element-2, .element-4");
+  list.removeChild(spanToDelete[0].parentNode);
+  list.removeChild(spanToDelete[1].parentNode);
 };
+/**
+ * Funcion para actuar sobre la segunda lista
+ */
+const changeSecondList = () => {
+  let secondList = document.getElementById("list2");
+  let elementosLi = document.getElementById("list1").getElementsByTagName("li");
+
+  for (e of elementosLi) {
+    let elementoLi = document.createElement("li");
+    let elementoSpan = e.firstChild;
+    let elementoButton = document.createElement("button");
+
+    elementoButton.innerHTML = elementoSpan.innerHTML;
+    elementoButton.setAttribute("class", elementoSpan.className);
+
+    elementoLi.appendChild(elementoButton);
+    secondList.appendChild(elementoLi);
+  }
+};
+
+c;
+
 function onLoad() {
-  console.log("hi");
+  console.log("Ejercicio 2 JavaScript por Alvaro Rueda");
+  changeFirstList();
+  changeSecondList();
 }
